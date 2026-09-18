@@ -7,6 +7,7 @@ import { CURRENT_TERMINOLOGY } from './terminologyConfig';
 
 // Application metadata
 export const APP_NAME = 'YB TRADING JOURNAL';
+export const APP_LOGO_SRC = '/logo.png';
 export const APP_VERSION = '2.0.0';
 export const APP_DESCRIPTION = `${CURRENT_TERMINOLOGY.instrumentLabel} Trading Journal & Analytics`;
 
@@ -251,6 +252,7 @@ export const EXTERNAL_SERVICES = {
 // Constants export for easy importing
 export default {
   APP_NAME,
+  APP_LOGO_SRC,
   APP_VERSION,
   DEFAULTS,
   VALIDATION,
