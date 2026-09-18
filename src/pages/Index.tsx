@@ -172,7 +172,7 @@ const Index: React.FC = () => {
   };
 
   return (
-    <div className="flex h-[100dvh] bg-gray-100 overflow-hidden">
+    <div className="flex h-[100dvh] bg-gray-100">
       <Sidebar 
         currentPage={showAddTrade ? 'add-trade' : showImportTrades ? 'import-trades' : (currentPage === 'trade-review' ? 'trades' : currentPage)} 
         onPageChange={handlePageChange}
@@ -183,7 +183,7 @@ const Index: React.FC = () => {
       />
       
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <header className="md:hidden sticky top-0 z-30 flex items-center gap-3 bg-slate-900 text-white px-3 py-2.5 shadow-sm">
+        <header className="md:hidden sticky top-0 z-40 flex items-center gap-3 bg-slate-900 text-white px-3 py-2.5 shadow-sm">
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}

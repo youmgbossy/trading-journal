@@ -65,22 +65,23 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
 
   return (
     <>
-      <div className={cn('border-b border-slate-700', compact ? 'p-3' : 'p-4')}>
+      <div className={cn('border-b border-slate-700', compact ? 'p-3 pt-12' : 'p-4')}>
         <img
           src={APP_LOGO_SRC}
           alt="Young Bossy Trades"
           className={cn(
             'rounded-xl object-cover mx-auto',
-            compact ? 'h-16 w-16' : 'w-full max-h-40'
+            compact ? 'h-14 w-14' : 'w-full max-h-40'
           )}
         />
-        <p className="mt-3 text-center text-xs font-bold tracking-widest text-slate-200">
+        <p className="mt-2 text-center text-xs font-bold tracking-widest text-slate-200">
           {APP_NAME}
         </p>
       </div>
 
       <div className="p-4 space-y-2">
         <button 
+          type="button"
           onClick={onAddTrade}
           className="w-full bg-custom-purple hover:bg-custom-purple/90 text-white py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
@@ -89,6 +90,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
         </button>
         
         <button 
+          type="button"
           onClick={onImportTrades}
           className="w-full bg-custom-blue hover:bg-custom-blue/90 text-white py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
@@ -102,6 +104,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
           const Icon = item.icon;
           return (
             <button
+              type="button"
               key={item.id}
               onClick={() => onPageChange(item.id)}
               className={cn(
@@ -135,6 +138,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
             </p>
           </div>
           <button
+            type="button"
             onClick={() => onPageChange('settings')}
             className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-colors"
             title="Settings"
@@ -189,9 +193,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     document.body.style.overflow = 'hidden';
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeMobile();
-      }
+      if (event.key === 'Escape') closeMobile();
     };
 
     window.addEventListener('keydown', onKeyDown);
@@ -201,29 +203,49 @@ const Sidebar: React.FC<SidebarProps> = ({
     };
   }, [mobileOpen, onMobileOpenChange]);
 
-  const desktopContent = (
-    <SidebarContent
-      currentPage={currentPage}
-      onPageChange={handlePageChange}
-      onAddTrade={handleAddTrade}
-      onImportTrades={handleImportTrades}
-    />
-  );
+  return (
+    <>
+      <aside className="hidden md:flex w-64 bg-slate-900 text-white h-screen flex-col shrink-0">
+        <SidebarContent
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          onAddTrade={handleAddTrade}
+          onImportTrades={handleImportTrades}
+        />
+      </aside>
 
-  const mobileMenu = mobileOpen && typeof document !== 'undefined'
-    ? createPortal(
-        <div className="md:hidden">
-          <button
-            type="button"
-            aria-label="Close navigation menu"
-            className="fixed inset-0 z-[90] bg-black/50"
+      {mobileOpen && typeof document !== 'undefined' && createPortal(
+        <>
+          <div
             onClick={closeMobile}
+            aria-hidden="true"
+            style={{
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 'min(288px, 85vw)',
+              backgroundColor: 'rgba(0, 0, 0, 0.45)',
+              zIndex: 9998,
+            }}
           />
           <aside
-            className="fixed inset-y-0 left-0 z-[100] w-[min(18rem,85vw)] bg-slate-900 text-white flex flex-col shadow-2xl"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation"
+            className="bg-slate-900 text-white shadow-2xl"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              width: 'min(288px, 85vw)',
+              zIndex: 9999,
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              pointerEvents: 'auto',
+            }}
           >
             <button
               type="button"
@@ -241,17 +263,9 @@ const Sidebar: React.FC<SidebarProps> = ({
               onImportTrades={handleImportTrades}
             />
           </aside>
-        </div>,
+        </>,
         document.body
-      )
-    : null;
-
-  return (
-    <>
-      <aside className="hidden md:flex w-64 bg-slate-900 text-white h-screen flex-col shrink-0">
-        {desktopContent}
-      </aside>
-      {mobileMenu}
+      )}
     </>
   );
 };
