@@ -1,4 +1,4 @@
-# Zella Trade Scribe 📈
+# YB TRADING JOURNAL 📈
 
 A modern, feature-rich trading journal application built with React, TypeScript, and Firebase. Inspired by professional trading platforms like Tradezella, Tradervue, and TraderSync.
 
@@ -47,7 +47,7 @@ A modern, feature-rich trading journal application built with React, TypeScript,
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd zella-trade-scribe
+   cd trading-journal
    ```
 
 2. **Install dependencies**

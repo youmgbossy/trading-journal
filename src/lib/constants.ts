@@ -1,12 +1,12 @@
 /**
- * Application constants for the Zella Trade Scribe
+ * Application constants for YB TRADING JOURNAL
  * All constants should use futures terminology where applicable
  */
 
 import { CURRENT_TERMINOLOGY } from './terminologyConfig';
 
 // Application metadata
-export const APP_NAME = 'Zella Trade Scribe';
+export const APP_NAME = 'YB TRADING JOURNAL';
 export const APP_VERSION = '2.0.0';
 export const APP_DESCRIPTION = `${CURRENT_TERMINOLOGY.instrumentLabel} Trading Journal & Analytics`;
 

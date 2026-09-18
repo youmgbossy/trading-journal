@@ -138,7 +138,7 @@ const PerformanceMetricsPanel: React.FC<PerformanceMetricsPanelProps> = ({
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold">Performance Overview</CardTitle>
           <Badge variant="outline" className="text-xs">
-            Zella Score: {metrics.zellaScore.toFixed(1)}
+            YB Score: {metrics.zellaScore.toFixed(1)}
           </Badge>
         </div>
       </CardHeader>

@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Alert, AlertDescription } from './ui/alert';
 import { Loader2, Mail, Lock, User, Chrome } from 'lucide-react';
+import { APP_NAME } from '@/lib/constants';
 
 const AuthForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -103,7 +104,7 @@ const AuthForm: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Zella Trade Scribe</CardTitle>
+          <CardTitle className="text-2xl font-bold">{APP_NAME}</CardTitle>
           <CardDescription>Your Personal Trading Journal</CardDescription>
         </CardHeader>
         <CardContent>
