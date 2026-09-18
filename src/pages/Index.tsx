@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
+import { APP_NAME, APP_LOGO_SRC } from '../lib/constants';
 import DashboardV2 from '../components/Dashboard_v2';
 import AddTrade from '../components/AddTrade';
 import TradeLog from '../components/TradeLog';
@@ -21,6 +23,7 @@ const Index: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [showAddTrade, setShowAddTrade] = useState(false);
   const [showImportTrades, setShowImportTrades] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Handle URL changes for special pages
   useEffect(() => {
@@ -54,6 +57,8 @@ const Index: React.FC = () => {
   }, [tradeId, location.pathname, location.state, location.search]);
 
   const handlePageChange = (page: string) => {
+    setSidebarOpen(false);
+
     // Handle URL navigation for special pages
     if (page === 'settings') {
       navigate('/settings');
@@ -167,16 +172,34 @@ const Index: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-[100dvh] bg-gray-100 overflow-hidden">
       <Sidebar 
         currentPage={showAddTrade ? 'add-trade' : showImportTrades ? 'import-trades' : (currentPage === 'trade-review' ? 'trades' : currentPage)} 
         onPageChange={handlePageChange}
         onAddTrade={handleAddTrade}
         onImportTrades={handleImportTrades}
+        mobileOpen={sidebarOpen}
+        onMobileOpenChange={setSidebarOpen}
       />
       
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <main className={`flex-1 overflow-x-hidden overflow-y-auto ${currentPage === 'trade-review' ? 'bg-gray-50 p-0' : 'bg-gray-100 p-6'}`}>
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header className="md:hidden sticky top-0 z-30 flex items-center gap-3 bg-slate-900 text-white px-3 py-2.5 shadow-sm">
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(true)}
+            className="p-2 -ml-1 rounded-lg hover:bg-slate-800"
+            aria-label="Open navigation menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <img
+            src={APP_LOGO_SRC}
+            alt=""
+            className="h-8 w-8 rounded-md object-cover shrink-0"
+          />
+          <span className="text-xs font-bold tracking-wide truncate">{APP_NAME}</span>
+        </header>
+        <main className={`flex-1 min-w-0 overflow-x-hidden overflow-y-auto ${currentPage === 'trade-review' ? 'bg-gray-50 p-0' : 'bg-gray-100 p-3 sm:p-4 md:p-6'}`}>
           {renderCurrentPage()}
         </main>
       </div>

@@ -358,14 +358,14 @@ export const DailyJournalRedesign: React.FC<DailyJournalRedesignProps> = ({
   }
 
   return (
-    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Trading Journal</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Trading Journal</h1>
           <p className="text-gray-600 mt-1">Track your progress, reflect on your trades</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <Button 
             variant="secondary" 
             size="sm"
@@ -397,7 +397,7 @@ export const DailyJournalRedesign: React.FC<DailyJournalRedesignProps> = ({
             {/* Week View */}
             <Card className="bg-card border-border">
               <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <CardTitle className="text-foreground flex items-center gap-2">
                     <Calendar className="h-5 w-5" />
                     Week View
@@ -408,7 +408,7 @@ export const DailyJournalRedesign: React.FC<DailyJournalRedesignProps> = ({
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-5 gap-4 mb-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 mb-6">
                   {['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map((dayName, index) => {
                     const date = new Date(selectedWeek.startDate);
                     date.setDate(selectedWeek.startDate.getDate() + index);
@@ -425,7 +425,7 @@ export const DailyJournalRedesign: React.FC<DailyJournalRedesignProps> = ({
                         )}
                         onClick={() => handleDateSelect(date)}
                       >
-                        <CardContent className="p-4 text-center">
+                        <CardContent className="p-2 sm:p-4 text-center">
                           <div className="text-xs font-medium mb-1">{dayName}</div>
                           <div className="text-2xl font-bold mb-2">{date.getDate()}</div>
                           <div className="text-xs mb-1">

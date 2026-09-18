@@ -172,14 +172,14 @@ export default function CalendarWidget({ trades = [], onDateClick, onTradeClick,
   const dayHeaders = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
   return (
-    <div className="w-full h-full p-4 flex flex-col">
+    <div className="w-full h-full p-2 sm:p-4 flex flex-col min-w-0">
       {/* Month Navigation and Summary */}
-      <div className="flex items-center justify-between mb-6 flex-shrink-0">
-          <div className="flex items-center space-x-2">
+      <div className="flex flex-col gap-3 mb-4 sm:mb-6 flex-shrink-0 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center space-x-2 min-w-0">
             <Button variant="outline" size="sm" onClick={goToPreviousMonth}>
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            <h2 className="text-lg font-semibold">
+            <h2 className="text-base sm:text-lg font-semibold truncate">
               {months[currentMonth]} {currentYear}
             </h2>
             <Button variant="outline" size="sm" onClick={goToNextMonth}>
@@ -187,7 +187,7 @@ export default function CalendarWidget({ trades = [], onDateClick, onTradeClick,
             </Button>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 overflow-x-auto">
             {/* Journaling Streak */}
             {journalStreak > 0 && (
               <div className="text-center">
@@ -220,8 +220,9 @@ export default function CalendarWidget({ trades = [], onDateClick, onTradeClick,
         {/* Day Headers */}
         <div className="grid grid-cols-7 gap-1 mb-3 flex-shrink-0">
           {dayHeaders.map((day) => (
-            <div key={day} className="h-10 flex items-center justify-center text-sm font-medium text-muted-foreground">
-              {day}
+            <div key={day} className="h-8 sm:h-10 flex items-center justify-center text-[10px] sm:text-sm font-medium text-muted-foreground">
+              <span className="sm:hidden">{day.charAt(0)}</span>
+              <span className="hidden sm:inline">{day}</span>
             </div>
           ))}
         </div>
@@ -277,7 +278,7 @@ export default function CalendarWidget({ trades = [], onDateClick, onTradeClick,
                   }
                 }}
                 className={`
-                  h-16 p-1 border rounded-md flex flex-col items-center justify-between text-sm relative
+                  h-12 sm:h-16 p-0.5 sm:p-1 border rounded-md flex flex-col items-center justify-between text-sm relative
                   ${isCurrentMonth(date) ? "bg-background" : "bg-muted/30 text-muted-foreground"}
                   ${isToday(date) ? "bg-primary text-primary-foreground font-semibold" : ""}
                   ${hasActivity && isProfitDay ? "bg-green-50 border-green-200" : ""}

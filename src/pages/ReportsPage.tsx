@@ -26,7 +26,7 @@ const ReportsPage: React.FC = () => {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Trading Performance Reports</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Trading Performance Reports</h1>
           <p className="text-gray-600 mt-1">Deep analysis of your trading performance</p>
         </div>
 
@@ -76,12 +76,12 @@ const ReportsPage: React.FC = () => {
       {/* Header with title and date filter */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Trading Performance Reports</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Trading Performance Reports</h1>
           <p className="text-gray-600 mt-1">Get deep insights into your trading performance</p>
         </div>
 
         {/* Date Range Filter */}
-        <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-2">
+        <div className="flex flex-wrap items-center gap-2 bg-gray-50 rounded-lg p-2">
           <Filter className="w-4 h-4 text-gray-500" />
           <div className="flex gap-1">
             <Button

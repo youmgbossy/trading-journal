@@ -285,7 +285,7 @@ const Tools: React.FC = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <Label htmlFor="pip-lot-size">Lot Size</Label>
                   <Input
@@ -360,7 +360,7 @@ const Tools: React.FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <Label htmlFor="pos-account-balance">Account Balance</Label>
                   <Input
@@ -462,7 +462,7 @@ const Tools: React.FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <Label htmlFor="risk-lot-size">Lot Size</Label>
                   <Input
@@ -1380,11 +1380,11 @@ const Tools: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Trading Tools</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Trading Tools</h1>
           <p className="text-gray-600 mt-1">Professional forex calculators and utilities to enhance your trading</p>
         </div>
       </div>
