@@ -110,7 +110,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const profitFactor = grossLosses > 0 ? grossWins / grossLosses : grossWins > 0 ? 999 : 0;
     const tradeExpectancy = closedTrades.length > 0 ? netPnL / closedTrades.length : 0;
     
-    // Simple Zella Score calculation (0-100)
+    // Simple YB Score calculation (0-100)
     const zellaScore = Math.min(100, Math.max(0, 
       (winRate * 0.3) + 
       (Math.min(profitFactor * 10, 50) * 0.4) + 
@@ -263,10 +263,10 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Zella Score */}
+          {/* YB Score */}
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Zella Score</h3>
+              <h3 className="text-lg font-semibold text-gray-900">YB Score</h3>
               <span className="text-sm text-gray-500">ⓘ</span>
             </div>
             <div className="text-center">
@@ -306,7 +306,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
               </div>
               <div className="text-center mt-2">
                 <span className="text-lg font-semibold text-gray-900">
-                  Your Zella Score: {Math.round(metrics.zellaScore)}
+                  Your YB Score: {Math.round(metrics.zellaScore)}
                 </span>
               </div>
             </div>

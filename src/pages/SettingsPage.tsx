@@ -492,7 +492,7 @@ const SettingsPage: React.FC = () => {
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <h4 className="text-sm font-medium text-yellow-800 mb-2">Setup Instructions</h4>
                   <ol className="text-sm text-yellow-700 space-y-1 list-decimal list-inside">
-                    <li>Install the Zella Trade Scribe EA in your MetaTrader platform</li>
+                    <li>Install the YB TRADING JOURNAL EA in your MetaTrader platform</li>
                     <li>Configure the EA with your journal API key</li>
                     <li>Enable auto-trading and confirm EA is running</li>
                     <li>Test the connection using the buttons above</li>

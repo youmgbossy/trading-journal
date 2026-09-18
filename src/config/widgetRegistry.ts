@@ -23,7 +23,7 @@ export const WIDGET_REGISTRY: WidgetConfig[] = [
   { id: 'avgWinLoss', title: 'Avg Win/Loss', component: AvgWinLossWidget, defaultLayout: { w: 2, h: 1 }, minSize: { w: 2, h: 1 }, category: 'overview', description: 'Average win compared to average loss' },
   
   // Categories for the customizable grid
-  { id: 'zellaScore', title: 'Zella Score', component: ZellaScoreWidget, defaultLayout: { w: 6, h: 4 }, minSize: { w: 6, h: 4 }, category: 'analysis', description: 'Overall trading performance score' },
+  { id: 'zellaScore', title: 'YB Score', component: ZellaScoreWidget, defaultLayout: { w: 6, h: 4 }, minSize: { w: 6, h: 4 }, category: 'analysis', description: 'Overall trading performance score' },
   { id: 'recentTrades', title: 'Recent Trades', component: RecentTradesWidget, defaultLayout: { w: 6, h: 4 }, minSize: { w: 6, h: 4 }, category: 'trades', description: 'List of your most recent trades' },
   { id: 'performanceChart', title: 'Performance Chart', component: PerformanceChartWidget, defaultLayout: { w: 6, h: 4 }, minSize: { w: 6, h: 4 }, category: 'performance', description: 'Cumulative P&L over time' },
   { id: 'calendar', title: 'Trading Calendar', component: CalendarWidget, defaultLayout: { w: 6, h: 4 }, minSize: { w: 6, h: 4 }, category: 'analysis', description: 'Calendar view of your trading activity' }

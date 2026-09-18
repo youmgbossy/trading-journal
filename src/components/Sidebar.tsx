@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { APP_NAME } from '@/lib/constants';
 
 interface SidebarProps {
   currentPage: string;
@@ -52,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange, onAddTrade
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold tracking-wide">Chart Journal</span>
+          <span className="text-sm font-bold tracking-wide leading-tight">{APP_NAME}</span>
         </div>
       </div>
 

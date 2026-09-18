@@ -320,7 +320,7 @@ export const AVAILABLE_WIDGETS: DashboardWidget[] = [
   },
   {
     id: 'zellaScore',
-    label: 'Zella Score',
+    label: 'YB Score',
     category: 'performance',
     getValue: (trades) => {
       const closedTrades = trades.filter(trade => trade.status === 'closed');
@@ -338,7 +338,7 @@ export const AVAILABLE_WIDGETS: DashboardWidget[] = [
       const avgLoss = losingTrades.length > 0 ? grossLosses / losingTrades.length : 0;
       const avgWinLoss = avgLoss > 0 ? avgWin / avgLoss : 0;
       
-      // Zella Score calculation (0-100)
+      // YB Score calculation (0-100)
       const zellaScore = Math.min(100, Math.max(0, 
         (winRate * 0.3) + 
         (Math.min(profitFactor * 10, 50) * 0.4) + 
