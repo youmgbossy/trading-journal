@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -10,13 +11,13 @@ import {
   Upload,
   LogOut,
   User,
-  Settings
+  Settings,
+  X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Sheet, SheetContent, SheetTitle } from './ui/sheet';
 import { APP_NAME, APP_LOGO_SRC } from '@/lib/constants';
 
 interface SidebarProps {
@@ -42,6 +43,7 @@ interface SidebarContentProps {
   onPageChange: (page: string) => void;
   onAddTrade: () => void;
   onImportTrades: () => void;
+  compact?: boolean;
 }
 
 const SidebarContent: React.FC<SidebarContentProps> = ({
@@ -49,6 +51,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
   onPageChange,
   onAddTrade,
   onImportTrades,
+  compact = false,
 }) => {
   const { user, signOut } = useAuth();
 
@@ -62,11 +65,14 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
 
   return (
     <>
-      <div className="p-4 border-b border-slate-700">
+      <div className={cn('border-b border-slate-700', compact ? 'p-3' : 'p-4')}>
         <img
           src={APP_LOGO_SRC}
           alt="Young Bossy Trades"
-          className="w-full rounded-xl object-cover max-h-40"
+          className={cn(
+            'rounded-xl object-cover mx-auto',
+            compact ? 'h-16 w-16' : 'w-full max-h-40'
+          )}
         />
         <p className="mt-3 text-center text-xs font-bold tracking-widest text-slate-200">
           {APP_NAME}
@@ -176,7 +182,26 @@ const Sidebar: React.FC<SidebarProps> = ({
     closeMobile();
   };
 
-  const content = (
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeMobile();
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [mobileOpen, onMobileOpenChange]);
+
+  const desktopContent = (
     <SidebarContent
       currentPage={currentPage}
       onPageChange={handlePageChange}
@@ -185,23 +210,48 @@ const Sidebar: React.FC<SidebarProps> = ({
     />
   );
 
+  const mobileMenu = mobileOpen && typeof document !== 'undefined'
+    ? createPortal(
+        <div className="md:hidden">
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            className="fixed inset-0 z-[90] bg-black/50"
+            onClick={closeMobile}
+          />
+          <aside
+            className="fixed inset-y-0 left-0 z-[100] w-[min(18rem,85vw)] bg-slate-900 text-white flex flex-col shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation"
+          >
+            <button
+              type="button"
+              onClick={closeMobile}
+              className="absolute top-3 right-3 z-10 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <SidebarContent
+              compact
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              onAddTrade={handleAddTrade}
+              onImportTrades={handleImportTrades}
+            />
+          </aside>
+        </div>,
+        document.body
+      )
+    : null;
+
   return (
     <>
       <aside className="hidden md:flex w-64 bg-slate-900 text-white h-screen flex-col shrink-0">
-        {content}
+        {desktopContent}
       </aside>
-
-      <Sheet open={mobileOpen} onOpenChange={onMobileOpenChange}>
-        <SheetContent
-          side="left"
-          className="w-72 max-w-[85vw] p-0 bg-slate-900 text-white border-slate-700 [&>button]:text-white [&>button]:top-3 [&>button]:right-3"
-        >
-          <SheetTitle className="sr-only">Navigation</SheetTitle>
-          <div className="h-full flex flex-col overflow-hidden">
-            {content}
-          </div>
-        </SheetContent>
-      </Sheet>
+      {mobileMenu}
     </>
   );
 };
