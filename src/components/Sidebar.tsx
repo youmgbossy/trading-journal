@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME, APP_LOGO_SRC } from '@/lib/constants';
 
 interface SidebarProps {
   currentPage: string;
@@ -48,13 +48,15 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange, onAddTrade
   return (
     <div className="w-64 bg-slate-900 text-white h-screen flex flex-col">
       {/* Logo */}
-      <div className="p-6 border-b border-slate-700">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-            <TrendingUp className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-sm font-bold tracking-wide leading-tight">{APP_NAME}</span>
-        </div>
+      <div className="p-4 border-b border-slate-700">
+        <img
+          src={APP_LOGO_SRC}
+          alt="Young Bossy Trades"
+          className="w-full rounded-xl object-cover"
+        />
+        <p className="mt-3 text-center text-xs font-bold tracking-widest text-slate-200">
+          {APP_NAME}
+        </p>
       </div>
 
       {/* Action Buttons */}
