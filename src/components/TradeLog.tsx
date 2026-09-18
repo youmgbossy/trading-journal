@@ -502,11 +502,11 @@ const TradeLog: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Trades</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Trades</h1>
           <p className="text-gray-600 mt-1">View and manage all your trading activity</p>
         </div>
       </div>
@@ -544,11 +544,11 @@ const TradeLog: React.FC = () => {
       </div>
 
       {/* Enhanced Search and Filter Bar */}
-      <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-3 sm:p-4">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 min-w-0">
             {/* Enhanced Search Input */}
-            <div className="relative">
+            <div className="relative w-full sm:w-80">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
               </div>
@@ -558,7 +558,7 @@ const TradeLog: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={cn(
-                  "pl-10 w-80 h-9 border rounded-md focus:ring-1 transition-all duration-200 text-sm",
+                  "pl-10 pr-8 w-full h-9 border rounded-md focus:ring-1 transition-all duration-200 text-sm",
                   searchResult?.isValid === false 
                     ? "border-red-300 focus:border-red-500 focus:ring-red-500/20 bg-red-50" 
                     : searchResult?.isValid === true
@@ -639,7 +639,7 @@ const TradeLog: React.FC = () => {
             )}
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {/* Tag Filter */}
             <TagFilter
               availableTags={availableTags}
@@ -771,7 +771,7 @@ const TradeLog: React.FC = () => {
             {/* Enhanced Table Header */}
             <thead>
               <tr className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-12">
+                <th className="px-3 sm:px-3 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-12">
                   <button
                     onClick={handleSelectAll}
                     className="flex items-center justify-center w-5 h-5 text-gray-500 hover:text-gray-700 transition-colors"
@@ -788,43 +788,43 @@ const TradeLog: React.FC = () => {
                     )}
                   </button>
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   <div className="flex items-center space-x-1 cursor-pointer hover:text-gray-900 transition-colors">
                     <span>{CURRENT_TERMINOLOGY.instrumentLabel}</span>
                     <ArrowUpDown className="h-3 w-3" />
                   </div>
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   <div className="flex items-center space-x-1 cursor-pointer hover:text-gray-900 transition-colors">
                     <span>Date</span>
                     <ArrowUpDown className="h-3 w-3" />
                   </div>
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Side
                 </th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Entry
                 </th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Exit
                 </th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   <div className="flex items-center justify-end space-x-1 cursor-pointer hover:text-gray-900 transition-colors">
                     <span>{CURRENT_TERMINOLOGY.priceMovementLabel}</span>
                     <ArrowUpDown className="h-3 w-3" />
                   </div>
                 </th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   <div className="flex items-center justify-end space-x-1 cursor-pointer hover:text-gray-900 transition-colors">
                     <span>P&L</span>
                     <ArrowUpDown className="h-3 w-3" />
                   </div>
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Tags
                 </th>
-                <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -843,7 +843,7 @@ const TradeLog: React.FC = () => {
                   onClick={() => handleViewTrade(trade.id)}
                 >
                   {/* Checkbox */}
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -860,21 +860,21 @@ const TradeLog: React.FC = () => {
                   </td>
 
                   {/* Currency Pair */}
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-semibold text-gray-900 group-hover:text-blue-900 transition-colors">
                       {trade.currencyPair}
                     </div>
                   </td>
 
                   {/* Date */}
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
                       {new Date(trade.date).toLocaleDateString('en-US', { month: 'short', day: '2-digit' })}
                     </div>
                   </td>
 
                   {/* Side */}
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                     <span
                       className={`inline-flex px-2 py-1 text-xs font-medium rounded-md transition-colors duration-200 ${
                         trade.side === "long"
@@ -887,21 +887,21 @@ const TradeLog: React.FC = () => {
                   </td>
 
                   {/* Entry */}
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-right">
                     <div className="text-sm font-mono text-gray-900 group-hover:text-blue-900 transition-colors">
                       {trade.entryPrice?.toFixed(5)}
                     </div>
                   </td>
 
                   {/* Exit */}
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-right">
                     <div className="text-sm font-mono text-gray-900 group-hover:text-blue-900 transition-colors">
                       {trade.exitPrice?.toFixed(5) || '-'}
                     </div>
                   </td>
 
                   {/* Pips */}
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-right">
                     <div
                       className={`text-sm font-semibold flex items-center justify-end space-x-1 ${
                         (trade.pips || 0) > 0 ? "text-green-600" : "text-red-600"
@@ -916,14 +916,14 @@ const TradeLog: React.FC = () => {
                   </td>
 
                   {/* P&L */}
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-right">
                     <div className={`text-sm font-bold ${(trade.pnl || 0) > 0 ? "text-green-600" : "text-red-600"}`}>
                       {(trade.pnl || 0) > 0 ? "+" : ""}${(trade.pnl || 0).toFixed(2)}
                     </div>
                   </td>
 
                   {/* Tags */}
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                     <TagDisplay 
                       tags={trade.tags || []} 
                       variant="compact"
@@ -941,7 +941,7 @@ const TradeLog: React.FC = () => {
                   </td>
 
                   {/* Actions */}
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                  <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-center">
                     <div className="flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       {/* View Notes Button - Only show if trade has journal notes */}
                       {tradeIntegrationData.get(trade.id)?.hasJournalNotes && (

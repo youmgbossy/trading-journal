@@ -356,16 +356,16 @@ const EnhancedPlaybooks: React.FC<EnhancedPlaybooksProps> = ({
   );
 
   return (
-    <div className="p-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mb-2">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Professional Strategy Management</h1>
           <p className="text-gray-600 mt-1">
             Track and analyze your trading strategies with professional-grade metrics
           </p>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex flex-wrap gap-2">
           <Button 
             variant={activeView === 'dashboard' ? 'default' : 'outline'}
             onClick={() => setActiveView('dashboard')}

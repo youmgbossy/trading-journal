@@ -169,11 +169,11 @@ const DashboardV2 = () => {
 
   return (
     <>
-      <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
+      <div className="space-y-4 sm:space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
             <p className="text-gray-600 mt-1">Your trading performance at a glance.</p>
           </div>
         </div>
@@ -181,7 +181,7 @@ const DashboardV2 = () => {
         <AccountSelector />
 
         {/* Customizable Top Metrics Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {getSelectedWidgets().map((widget, index) => (
             <DashboardWidget
               key={widget.id}
@@ -195,7 +195,7 @@ const DashboardV2 = () => {
 
         {/* Static 1x2 Main Grid */}
         {!isLoadingLayout && (
-          <div className="bg-white rounded-lg shadow-sm p-4 min-h-[500px]">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4 min-h-[280px] md:min-h-[500px]">
             {isGridEmpty ? (
               <DashboardEmptyState onAddWidget={() => {
                 // Add the first available widget to the first slot
@@ -204,7 +204,7 @@ const DashboardV2 = () => {
                 }
               }} />
             ) : (
-              <div className="grid grid-cols-2 gap-4 h-[500px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[500px]">
                 {mainWidgets.map((widgetId, index) => (
                   <div key={index} className="h-full min-h-0">
                     {widgetId ? (

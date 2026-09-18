@@ -107,9 +107,9 @@ const AuthForm: React.FC = () => {
           <img
             src={APP_LOGO_SRC}
             alt="Young Bossy Trades"
-            className="w-28 h-28 mx-auto mb-4 rounded-xl object-cover shadow-md"
+            className="w-20 h-20 sm:w-28 sm:h-28 mx-auto mb-4 rounded-xl object-cover shadow-md"
           />
-          <CardTitle className="text-2xl font-bold">{APP_NAME}</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-bold">{APP_NAME}</CardTitle>
           <CardDescription>Your Personal Trading Journal</CardDescription>
         </CardHeader>
         <CardContent>
