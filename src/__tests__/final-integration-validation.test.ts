@@ -114,13 +114,13 @@ describe('FINAL INTEGRATION VALIDATION', () => {
 
       // Test futures terminology
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
       expect(CURRENT_TERMINOLOGY.positionSizeLabel).toBe('Contract Size');
       expect(CURRENT_TERMINOLOGY.priceMovementUnit).toBe('points');
 
       // Test export with futures terminology
       const futuresSummary = JournalExportService.getExportSummary(testTradeData);
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
 
       // Verify data consistency
       expect(forexSummary.totalTrades).toBe(futuresSummary.totalTrades);
@@ -180,11 +180,11 @@ describe('FINAL INTEGRATION VALIDATION', () => {
       expect(summary.totalTrades).toBe(1);
       expect(summary.totalPnL).toBe(325.00);
       expect(summary.winRate).toBe(100);
-      expect(summary.terminology).toContain('Futures Instrument');
+      expect(summary.terminology).toContain('Trading Assets');
 
       // Test HTML generation
       const htmlContent = JournalExportService.generatePDFContent(testTradeData);
-      expect(htmlContent).toContain('Futures Instrument');
+      expect(htmlContent).toContain('Trading Assets');
       expect(htmlContent).toContain('Contract Size');
       expect(htmlContent).toContain('points');
       expect(htmlContent).toContain('ES'); // Test instrument
@@ -195,10 +195,10 @@ describe('FINAL INTEGRATION VALIDATION', () => {
 
       const summary = JournalExportService.getExportSummary(sampleFuturesTrades);
       expect(summary.totalTrades).toBe(sampleFuturesTrades.length);
-      expect(summary.terminology).toContain('Futures Instrument');
+      expect(summary.terminology).toContain('Trading Assets');
 
       const htmlContent = JournalExportService.generatePDFContent(sampleFuturesTrades);
-      expect(htmlContent).toContain('Futures Instrument');
+      expect(htmlContent).toContain('Trading Assets');
 
       // Verify key futures instruments are in sample data
       expect(htmlContent).toContain('ES'); // E-mini S&P 500
@@ -251,7 +251,7 @@ describe('FINAL INTEGRATION VALIDATION', () => {
       // Verify terminology remains consistent
       expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe(initialTerminology);
       expect(summary1.terminology).toBe(summary2.terminology);
-      expect(summary1.terminology).toContain('Futures Instrument');
+      expect(summary1.terminology).toContain('Trading Assets');
     });
   });
 
@@ -346,11 +346,11 @@ describe('FINAL INTEGRATION VALIDATION', () => {
 
       // 3. Switch to futures terminology
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
 
       // 4. Process same data with futures terminology
       const futuresSummary = JournalExportService.getExportSummary(testTradeData);
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
 
       // 5. Verify data consistency
       expect(forexSummary.totalTrades).toBe(futuresSummary.totalTrades);
@@ -358,12 +358,12 @@ describe('FINAL INTEGRATION VALIDATION', () => {
 
       // 6. Test export functionality
       const htmlExport = JournalExportService.generatePDFContent(testTradeData);
-      expect(htmlExport).toContain('Futures Instrument');
+      expect(htmlExport).toContain('Trading Assets');
       expect(htmlExport).toContain('Contract Size');
 
       // 7. Verify configuration uses terminology
       const instrumentColumn = AVAILABLE_COLUMNS.find(col => col.id === 'currencyPair');
-      expect(instrumentColumn?.label).toBe('Futures Instrument');
+      expect(instrumentColumn?.label).toBe('Trading Assets');
 
       // 8. Complete workflow validation
       expect(true).toBe(true); // If we reach here, the complete workflow works

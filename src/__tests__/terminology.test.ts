@@ -56,7 +56,7 @@ describe('Terminology System Tests', () => {
 
       // Switch to futures
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
       expect(CURRENT_TERMINOLOGY.positionSizeLabel).toBe('Contract Size');
       expect(CURRENT_TERMINOLOGY.priceMovementUnit).toBe('points');
 
@@ -113,7 +113,7 @@ describe('Terminology System Tests', () => {
 
       switchToFuturesTerminology();
       const futuresSummary = JournalExportService.getExportSummary(mockTrades);
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
     });
 
     it('should generate HTML reports with current terminology', () => {
@@ -124,7 +124,7 @@ describe('Terminology System Tests', () => {
 
       switchToFuturesTerminology();
       const futuresHtmlContent = JournalExportService.generatePDFContent(mockTrades);
-      expect(futuresHtmlContent).toContain('Futures Instrument');
+      expect(futuresHtmlContent).toContain('Trading Assets');
       expect(futuresHtmlContent).toContain('Contract Size');
     });
 
@@ -143,14 +143,14 @@ describe('Terminology System Tests', () => {
     it('should maintain terminology state across operations', () => {
       // Set futures terminology
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
 
       // Perform operations that might change state
       const summary = JournalExportService.getExportSummary(mockTrades);
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
 
       // Terminology should still be futures
-      expect(summary.terminology).toContain('Futures Instrument');
+      expect(summary.terminology).toContain('Trading Assets');
     });
 
     it('should handle terminology switching in export operations', () => {
@@ -162,7 +162,7 @@ describe('Terminology System Tests', () => {
       // Test futures export
       switchToFuturesTerminology();
       const futuresSummary = JournalExportService.getExportSummary(mockTrades);
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
 
       // Verify data integrity
       expect(forexSummary.totalTrades).toBe(futuresSummary.totalTrades);
@@ -280,8 +280,8 @@ describe('Terminology System Tests', () => {
       const futuresSummary = JournalExportService.getExportSummary(mockTrades);
       const futuresHtml = JournalExportService.generatePDFContent(mockTrades);
 
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
-      expect(futuresHtml).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
+      expect(futuresHtml).toContain('Trading Assets');
       expect(futuresHtml).toContain('Contract Size');
 
       // Verify data integrity is preserved

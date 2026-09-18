@@ -205,6 +205,16 @@ export const CURRENCY_PAIRS = {
   ]
 } as const;
 
+export const MAJOR_FOREX_PAIR_DETAILS = [
+  { symbol: 'EUR/USD', name: 'Euro / US Dollar' },
+  { symbol: 'GBP/USD', name: 'British Pound / US Dollar' },
+  { symbol: 'USD/JPY', name: 'US Dollar / Japanese Yen' },
+  { symbol: 'USD/CHF', name: 'US Dollar / Swiss Franc' },
+  { symbol: 'AUD/USD', name: 'Australian Dollar / US Dollar' },
+  { symbol: 'USD/CAD', name: 'US Dollar / Canadian Dollar' },
+  { symbol: 'NZD/USD', name: 'New Zealand Dollar / US Dollar' },
+] as const;
+
 export const LOT_SIZES = {
   standard: 100000,
   mini: 10000,

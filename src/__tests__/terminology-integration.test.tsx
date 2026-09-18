@@ -58,7 +58,7 @@ describe('Terminology Integration Tests', () => {
       switchToFuturesTerminology();
 
       // Test that terminology configuration is set correctly
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
       expect(CURRENT_TERMINOLOGY.positionSizeLabel).toBe('Contract Size');
       expect(CURRENT_TERMINOLOGY.priceMovementUnit).toBe('points');
     });
@@ -152,7 +152,7 @@ describe('Terminology Integration Tests', () => {
         `P&L (${CURRENT_TERMINOLOGY.priceMovementUnit})`
       ];
 
-      expect(futuresHeaders).toContain('Futures Instrument');
+      expect(futuresHeaders).toContain('Trading Assets');
       expect(futuresHeaders).toContain('Contract Size');
     });
   });
@@ -179,7 +179,7 @@ describe('Terminology Integration Tests', () => {
 
       switchToFuturesTerminology();
       const futuresHelp = CURRENT_TERMINOLOGY.helpText;
-      expect(futuresHelp.instrumentSelection).toContain('futures instrument');
+      expect(futuresHelp.instrumentSelection).toContain('trading asset');
 
       // Help text should be different for different modes
       expect(forexHelp.instrumentSelection).not.toBe(futuresHelp.instrumentSelection);

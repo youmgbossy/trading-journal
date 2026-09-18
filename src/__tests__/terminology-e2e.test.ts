@@ -155,7 +155,7 @@ describe('End-to-End Terminology Tests', () => {
 
     it('should process complete futures trading workflow', () => {
       // Verify terminology is set correctly
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
       expect(CURRENT_TERMINOLOGY.positionSizeLabel).toBe('Contract Size');
       expect(CURRENT_TERMINOLOGY.priceMovementUnit).toBe('points');
 
@@ -170,10 +170,10 @@ describe('End-to-End Terminology Tests', () => {
       expect(summary.winRate).toBeCloseTo(66.7, 1);
 
       // Verify terminology changed but data integrity preserved
-      expect(summary.terminology).toContain('Futures Instrument');
+      expect(summary.terminology).toContain('Trading Assets');
 
       // Verify HTML content includes futures terminology
-      expect(htmlContent).toContain('Futures Instrument');
+      expect(htmlContent).toContain('Trading Assets');
       expect(htmlContent).toContain('Contract Size');
       expect(htmlContent).toContain('points');
       // Note: HTML content still shows original instrument names
@@ -185,7 +185,7 @@ describe('End-to-End Terminology Tests', () => {
       // Verify data integrity is maintained
       expect(summary.totalTrades).toBe(3);
       expect(summary.totalPnL).toBe(151.00);
-      expect(summary.terminology).toContain('Futures Instrument');
+      expect(summary.terminology).toContain('Trading Assets');
     });
   });
 
@@ -204,8 +204,8 @@ describe('End-to-End Terminology Tests', () => {
       const futuresSummary = JournalExportService.getExportSummary(testTrades);
       const futuresHtml = JournalExportService.generatePDFContent(testTrades);
 
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
-      expect(futuresHtml).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
+      expect(futuresHtml).toContain('Trading Assets');
 
       // Verify data consistency
       expect(forexSummary.totalTrades).toBe(futuresSummary.totalTrades);
@@ -226,13 +226,13 @@ describe('End-to-End Terminology Tests', () => {
       expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Currency Pair');
 
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
 
       switchToForexTerminology();
       expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Currency Pair');
 
       switchToFuturesTerminology();
-      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Futures Instrument');
+      expect(CURRENT_TERMINOLOGY.instrumentLabel).toBe('Trading Assets');
     });
   });
 
@@ -256,7 +256,7 @@ describe('End-to-End Terminology Tests', () => {
 
       expect(futuresHtmlContent).toContain('3'); // Total trades (unchanged)
       expect(futuresHtmlContent).toContain('151'); // Total P&L (unchanged)
-      expect(futuresHtmlContent).toContain('Futures Instrument'); // Terminology (changed)
+      expect(futuresHtmlContent).toContain('Trading Assets'); // Terminology (changed)
     });
   });
 
@@ -286,7 +286,7 @@ describe('End-to-End Terminology Tests', () => {
       expect(forexSummary.totalTrades).toBe(1000);
       expect(futuresSummary.totalTrades).toBe(1000);
       expect(forexSummary.terminology).toContain('Currency Pair');
-      expect(futuresSummary.terminology).toContain('Futures Instrument');
+      expect(futuresSummary.terminology).toContain('Trading Assets');
 
       // Performance check - should complete in reasonable time
       expect(processingTime).toBeLessThan(500); // Under 500ms for 1000 trades
