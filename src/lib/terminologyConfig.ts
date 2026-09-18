@@ -83,7 +83,7 @@ export const TERMINOLOGY_MAPPINGS: TerminologyMapping[] = [
   },
   {
     forex: 'currency pair',
-    futures: 'futures instrument',
+    futures: 'trading asset',
     description: 'Trading instrument identifier',
     context: ['instrument selection', 'display', 'reporting']
   },
@@ -170,9 +170,9 @@ export const FOREX_TERMINOLOGY: TerminologyConfig = {
 // Futures-specific terminology configuration
 export const FUTURES_TERMINOLOGY: TerminologyConfig = {
   // Core instrument terminology
-  instrumentLabel: 'Futures Instrument',
-  instrumentPlaceholder: 'Select futures instrument (e.g., ES, NQ, CL)',
-  instrumentDescription: 'The futures contract you want to trade',
+  instrumentLabel: 'Trading Assets',
+  instrumentPlaceholder: 'Select trading asset (e.g., EUR/USD)',
+  instrumentDescription: 'The trading asset you want to trade',
 
   // Position sizing terminology
   positionSizeLabel: 'Contract Size',
@@ -214,7 +214,7 @@ export const FUTURES_TERMINOLOGY: TerminologyConfig = {
 
   // Help text
   helpText: {
-    instrumentSelection: 'Select the futures instrument you want to trade from the dropdown list.',
+    instrumentSelection: 'Select the trading asset you want to trade from the dropdown list.',
     positionSizing: 'Enter the number of contracts you want to trade.',
     riskManagement: 'Set stop loss and take profit levels to manage your risk and lock in profits.',
     pipsVsPoints: 'Points are the standard unit for measuring price movements in futures trading.'

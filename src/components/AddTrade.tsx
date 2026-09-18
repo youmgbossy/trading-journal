@@ -9,7 +9,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { useTradeContext } from '../contexts/TradeContext';
-import { Trade, TradeFormData, TradeSetup, TradePattern, CURRENCY_PAIRS, TRADING_SESSIONS, LOT_SIZES, calculatePips, calculatePipValue } from '../types/trade';
+import { Trade, TradeFormData, TradeSetup, TradePattern, MAJOR_FOREX_PAIR_DETAILS, TRADING_SESSIONS, LOT_SIZES, calculatePips, calculatePipValue } from '../types/trade';
 import { toast } from '../hooks/use-toast';
 import { getTodayDate } from '../lib/dateUtils';
 import { SetupClassificationPanel } from './SetupClassificationPanel';
@@ -405,7 +405,7 @@ const AddTrade: React.FC<AddTradeProps> = ({ onClose }) => {
                       </h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Futures Instrument */}
+                        {/* Trading Assets */}
                         <div>
                           <Label htmlFor="currencyPair">{CURRENT_TERMINOLOGY.instrumentLabel} *</Label>
                           <select
@@ -413,9 +413,9 @@ const AddTrade: React.FC<AddTradeProps> = ({ onClose }) => {
                             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
                           >
                             <option value="">{CURRENT_TERMINOLOGY.instrumentPlaceholder}</option>
-                            <optgroup label="Index Futures">
-                              {FUTURES_CONTRACT_SPECS.filter(spec => spec.category === 'Index').map(spec => (
-                                <option key={spec.symbol} value={spec.symbol}>{spec.symbol} - {spec.name}</option>
+                            <optgroup label="Major Forex Pairs">
+                              {MAJOR_FOREX_PAIR_DETAILS.map(pair => (
+                                <option key={pair.symbol} value={pair.symbol}>{pair.symbol} - {pair.name}</option>
                               ))}
                             </optgroup>
                             <optgroup label="Currency Futures">

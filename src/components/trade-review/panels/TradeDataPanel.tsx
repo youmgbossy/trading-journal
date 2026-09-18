@@ -1,5 +1,6 @@
 import React from 'react';
 import { Trade } from '../../../types/trade';
+import { CURRENT_TERMINOLOGY } from '../../../lib/terminologyConfig';
 import { TradeReviewMode } from '../../../types/tradeReview';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import { Input } from '../../ui/input';
@@ -112,7 +113,7 @@ const TradeDataPanel: React.FC<TradeDataPanelProps> = ({
               {/* Currency Pair */}
               <div>
                 <Label htmlFor="currencyPair" className="text-sm font-semibold text-gray-700 mb-2 block">
-                  Currency Pair
+                  {CURRENT_TERMINOLOGY.instrumentLabel}
                 </Label>
                 {isEditing ? (
                   <Input
